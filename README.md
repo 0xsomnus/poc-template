@@ -20,6 +20,33 @@ forge install GITHUB_OWNER_NAME/GITHUB_REPOSITORY_NAME
 
 ## Foundry Reference
 
+### Mainnet forking
+
+With anvil:
+
+```bash
+anvil --fork-url $RPC_URL/$API_KEY
+```
+
+Forge test on a network fork either normally or for a specific block:
+
+```bash
+forge test --fork-url $MAINNET_RPC_URL
+```
+
+```bash
+forge test --fork-url $MAINNET_RPC_URL --fork-block-number 10000000
+```
+
+Forking with solidity scripting in one line:
+
+```solidity
+    function testCanCreateAndSelectInOneStep() public {
+        // creates a new fork and also selects it
+        uint256 mainnetFork = cheats.createSelectFork("mainnet");
+    }
+```
+
 ### Run PoC Test
 
 ```bash
